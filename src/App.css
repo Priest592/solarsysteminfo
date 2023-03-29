@@ -1,38 +1,23 @@
-.App {
-  text-align: center;
-}
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+body {margin: 0; padding: 0; background-color: #454545; overflow: hidden}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+#canvas {background: radial-gradient(#140d00 0%, #000000 100%);}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+.container{display: grid; height: 100vh; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr; grid-template-areas:  "sidebar canvas canvas canvas";}
+#SideBarP{background: rgb(15, 15, 15); grid-area: sidebar}
+#SolarSystemP{background: black; grid-area: canvas;}
 
-.App-link {
-  color: #61dafb;
-}
+.sContainer{display: grid; height: 100vh; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 50px 1fr 1fr 1fr; grid-template-areas: "navbar navbar navbar navbar";}
+#NavBarP{background: #0a0a0a; grid-area: navbar;}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nContainer{display: grid; height: 50px; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr;}
+.nItem{text-transform: uppercase; font-family: 'Bellefair', serif; font-size: 15px; color: rgb(128, 156, 167); text-align: center; padding-top: 15px; display: inline-block; cursor: pointer; position: relative; overflow: hidden;}
+.nItem:before{content: ""; position: absolute; width: 0; background: white; left: 45%; height: 2px; bottom: 0; transition: all .3s; opacity: 0.7;}
+.nItem:hover:before{width: 100%; left: 0;}
+.nItem:hover{font-size: 16px; color: rgb(255, 255, 255); background-color: rgb(38, 47, 58); transition: 0.3s ease-in-out}
+.nItem:active{font-size: 15.5px; background-color: rgb(58, 64, 70); transition: 0.01s ease-in-out}
+
+div{
+  color: rgba(0, 0, 0, 0.388)
 }
