@@ -1,13 +1,17 @@
 import React from 'react'
 
 const NavBar = () => {
+	const menuItem=[{path:"/", name:"About"}, {path:"/", name:"Modify"}, {path:"/", name:"Help"}, {path:"/", name:"Settings"}]
 	return (
-		<div className="nContainer">
-			<div className="nItem">About</div>
-			<div className="nItem">Statistics</div>
-			<div className="nItem">Controls</div>
-			<div className="nItem">Options</div>
-		</div>
+			<div className="nContainer">
+				{
+					menuItem.map((item, index)=>(
+						<div className="nItem" to={item.path} key={index}>
+							{item.name}
+						</div>
+					))
+				}
+			</div>
 	)
 }
 

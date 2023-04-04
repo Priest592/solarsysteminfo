@@ -1,7 +1,7 @@
-import React from 'react'
-import SolarSystem from './components/SolarSystem'
-import SideBar from './components/SideBar'
-import './App.css'
+import React from 'react';
+import SolarSystem from './components/SolarSystem';
+import SideBar from './components/SideBar';
+import './App.css';
 
 const App = () => {
   return (
