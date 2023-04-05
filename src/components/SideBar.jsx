@@ -15,13 +15,10 @@ const SideBar = () => {
 					<BrowserRouter>
 						<NavBar>
 							<Routes>
-								<Route path="">
-									<Route path="/about" element={<About />}/>
-									<Route path="/modify" element={<Modify />}/>
-									<Route path="/help" element={<Help />}/>
-									<Route path="/settings" element={<Settings />}/>
-								</Route>
-								
+								<Route path="/about" element={<About />}/>
+								<Route path="/modify" element={<Modify />}/>
+								<Route path="/help" element={<Help />}/>
+								<Route path="/settings" element={<Settings />}/>
 							</Routes>
 						</NavBar>
 					</BrowserRouter>
