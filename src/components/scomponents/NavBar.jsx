@@ -1,5 +1,5 @@
 import React from 'react'
-
+//randome comment to test branch
 const NavBar = () => {
 	const menuItem=[{path:"/", name:"About"}, {path:"/", name:"Modify"}, {path:"/", name:"Help"}, {path:"/", name:"Settings"}]
 	return (
