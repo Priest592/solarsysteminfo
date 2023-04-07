@@ -8,9 +8,19 @@ body {margin: 0; padding: 0; background-color: #454545; overflow: hidden}
 #SideBarP{background: rgb(15, 15, 15); grid-area: sidebar}
 #SolarSystemP{background: black; grid-area: canvas;}
 
-.sContainer{display: grid; height: 100vh; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 50px 1fr 1fr 1fr; grid-template-areas: "navbar navbar navbar navbar";}
+.sContainer{
+    display: grid;
+    height: 100vh; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 50px 1fr 1fr 1fr; 
+    grid-template-areas: 
+    "navbar navbar navbar navbar"
+    "display display display display"
+    "display display display display"
+    "display display display display";
+}
 #NavBarP{background: #0a0a0a; grid-area: navbar;}
-#SDisplayP{background: rgb(168, 50, 50)}
+#sDisplayP{background: #633232; grid-area: display}
 
 .nContainer{display: grid; height: 50px; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr; grid-template-areas:"navbar navbar navbar navbar"}
 .nItem{text-transform: uppercase; font-family: 'Bellefair', serif; font-size: 15px; color: rgb(128, 156, 167); text-align: center; padding-top: 16px; cursor: pointer; position: relative; overflow: hidden}

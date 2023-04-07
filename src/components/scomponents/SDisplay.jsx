@@ -2,7 +2,7 @@ import React from 'react';
 
 const SDisplay = () => {
   return (
-    <div>sdaasdsadsaddas</div>
+    <div></div>
   );
 };
 
