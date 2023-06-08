@@ -1,32 +1,29 @@
 import React from 'react';
-import NavBar from './scomponents/NavBar';
-import SDisplay from './scomponents/SDisplay';
+import NavBar from './NavBar.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import About from './scomponents/pages/About.jsx';
-import Modify from './scomponents/pages/Modify.jsx';
-import Help from './scomponents/pages/Help.jsx';
-import Settings from './scomponents/pages/Settings.jsx';
+import Sun from './pages/Sun.jsx';
+import Moons from './pages/Moons.jsx'
+import Planets from './pages/Planets';
+import Misc from './pages/Moons.jsx';
+import Settings from './pages/Settings.jsx';
 
 const SideBar = () => {
 	return (
-		<div>
-			<div className="sContainer">
+		<div className="sContainer">
+			<BrowserRouter>
 				<div id="NavBarP">
-					<BrowserRouter>
-						<NavBar>
-							<Routes>
-								<Route path="/about" element={<About />}/>
-								<Route path="/modify" element={<Modify />}/>
-								<Route path="/help" element={<Help />}/>
-								<Route path="/settings" element={<Settings />}/>
-							</Routes>
-						</NavBar>
-					</BrowserRouter>
+				<NavBar/>
 				</div>
 				<div id="sDisplayP">
-					<SDisplay/>
+					<Routes>
+						<Route path="/" element={<Sun />}/>
+						<Route path="/planets" element={<Planets />}/>
+						<Route path="/moons" element={<Moons />}/>
+						<Route path="/misc" element={<Misc />}/>
+						<Route path="/settings" element={<Settings />}/>
+					</Routes>
 				</div>
-			</div>
+			</BrowserRouter>
 		</div>
 	)
 }
