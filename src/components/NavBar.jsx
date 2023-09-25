@@ -8,7 +8,6 @@ const NavBar = () => {
 		{path:"/planets", name:"Planets"}, 
 		{path:"/moons", name:"Moons"},
 		{path:"/misc", name:"Misc"}, 
-		{path:"/settings", name:"Settings"}
 	]
 	return (
 			<div className="nContainer">

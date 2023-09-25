@@ -1,22 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Aboreto&display=swap'); /*Uppercase Font*/
 
 body {margin: 0; padding: 0; background-color: #454545; overflow: hidden}
+h1 {margin: 0}
 
-#canvas {background: rgb(20, 15, 14)}
-/*background: linear-gradient(#e66465, #9198e5);*/
+/*#canvas {background: #231f20}*/
+#canvas {background: radial-gradient(#231f20, #100f0f);}
 
-.container{display: grid; height: 100vh; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 1fr; grid-template-areas:  "sidebar canvas canvas canvas";}
+
+.container{display: grid; height: 100vh; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr; grid-template-areas:  "sidebar canvas canvas canvas canvas";}
 #SideBarP{background: rgb(15, 15, 15); grid-area: sidebar}
-#SolarSystemP{background: black; grid-area: canvas;}
+#SolarSystemP{background: black; grid-area: canvas;} 
 
 .sContainer{display: grid; height: 100vh; grid-template-columns: 1fr 1fr 1fr 1fr; grid-template-rows: 50px 1fr; grid-template-areas: "navbar navbar navbar navbar" "display display display display";}
-#NavBarP{background: #0a0a0a; grid-area: navbar;}
-#sDisplayP{background: #030303; grid-area: display}
+#NavBarP{background: #000000; grid-area: navbar;}
+#sDisplayP{overflow: auto; background: #0e0e0e; grid-area: display;}
 
-.nContainer{display: grid; height: 50px; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr; grid-template-areas:"navbar navbar navbar navbar"}
-.nItem{text-transform: uppercase; font-family: 'Aboreto'; font-size: 16px; color: rgb(161, 161, 161); text-align: center; padding-top: 15px; cursor: pointer; position: relative; overflow: hidden; text-decoration: none}
+.nContainer{display: grid; height: 50px; grid-template-columns: 1fr 1fr 1fr 1fr ; grid-template-rows: 1fr; grid-template-areas:"navbar navbar navbar navbar"}
+.nItem{background-color: #1b1b1b; text-transform: uppercase; font-family: 'Aboreto'; font-size: 16px; color: rgb(161, 161, 161); text-align: center; padding-top: 15px; cursor: pointer; position: relative; overflow: hidden; text-decoration: none}
 .nItem:before{content: ""; position: absolute; width: 0; background: #ffffff; left: 45%; height: 3px; bottom: 0; transition: all .3s;}
 .nItem:hover:before{width: 100%; left: 0;}
 .nItem:hover{color: #ffffff; transition: 0.2s ease-in-out}
 .active{color: #ffffff}
 .active:before{width: 100%; left: 0}
+
+.editor{height: auto; background: #1b1b1b; margin: 5px; font-family: 'Aboreto'; font-size: 12.5px; color: rgb(161, 161, 161);}
+.card{background: #1b1b1b; margin: 5px; margin-bottom: -7.5px; font-family: 'Aboreto'; font-size: 12.5px; color: rgb(161, 161, 161);}
+.card:hover{background: #232323}
+
+::-webkit-scrollbar{width: 0.4vw;}
+::-webkit-scrollbar-track{background: transparent; margin: 5px;}
+::-webkit-scrollbar-thumb{background: #2a2a2a;}
+::-webkit-scrollbar-thumb:hover{background: #2f2f2f;}

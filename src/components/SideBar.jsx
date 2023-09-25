@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Sun from './pages/Sun.jsx';
 import Moons from './pages/Moons.jsx'
 import Planets from './pages/Planets';
-import Misc from './pages/Moons.jsx';
-import Settings from './pages/Settings.jsx';
+import Misc from './pages/Misc.jsx';
+
 
 const SideBar = () => {
 	return (
@@ -20,7 +20,6 @@ const SideBar = () => {
 						<Route path="/planets" element={<Planets />}/>
 						<Route path="/moons" element={<Moons />}/>
 						<Route path="/misc" element={<Misc />}/>
-						<Route path="/settings" element={<Settings />}/>
 					</Routes>
 				</div>
 			</BrowserRouter>

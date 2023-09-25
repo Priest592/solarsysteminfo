@@ -1,8 +1,11 @@
 import React from 'react';
+import MoonList from '../lists/MoonList'
 
 const Moons = () => {
   return (
-    <div>Moons</div>
+    <div>
+      <MoonList/>
+    </div>
   );
 };
 
