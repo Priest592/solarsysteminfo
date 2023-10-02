@@ -3,9 +3,8 @@ import Canvas from './Canvas'
 import {sunDefaults, planetDefaults, moonDefaults, miscDefaults} from './lists/Defaults'
 
 const SolarSystem = () => {
-  const points = []
   const point=[]
-  const linewidth = 0.3
+  const linewidth = 0.1
   const linecolor = "#40404080"
 
 	class Sun {
@@ -201,7 +200,6 @@ const SolarSystem = () => {
       ctx.rotate(frameCount*this.velocity1)
       ctx.translate(0, this.range1)
       ctx.rotate(frameCount*this.velocity2)
-
       ctx.beginPath()
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
       ctx.shadowColor = this.color
@@ -209,15 +207,13 @@ const SolarSystem = () => {
       ctx.fillStyle = this.color
       ctx.fill()
       ctx.closePath()
-
       ctx.shadowColor = 'transparent'
       ctx.shadowBlur = 0
       ctx.setTransform(1, 0, 0, 1, 0, 0)
     }
   }
 
-  let sun = new Sun(30, '#ffae42', 30, '#ff8b3d')
-
+  let sun = new Sun(30, '#ffae42', 30, '#ff8b3d7b')
   let mercury = new Planet(0.004787, 50, 1.125, '#747b81')
   let venus = new Planet(0.003502, 70, 1.875, '#ff8c00')
   let earth = new Planet(0.002978, 90, 2, '#0492c2')
@@ -226,7 +222,6 @@ const SolarSystem = () => {
   let saturn = new Planet(0.001269, 220, 5, '#ec9706', 8, '#964800', 3)
   let uranus = new Planet(0.000981, 260, 4.5, '#52c8db', 7, '#003152', 0.75)
   let neptune = new Planet(0.000843, 300, 4, '#1d4f78')
-
   let moon = new Moon(0.002978, 5, 0.75, 'grey', 90, 0.02,)
   let phobos = new Moon(0.0027077, 4, 0.375, 'grey', 110, 0.02)
   let deimos = new Moon(0.0027077, 6, 0.375, 'grey', 110, 0.025)
@@ -246,12 +241,10 @@ const SolarSystem = () => {
   let nereid = new Moon(0.000843, 7, 0.425, 'grey', 300, 0.0005)
   let proteus = new Moon(0.000843, 10, 0.425, 'grey', 300, 0.02)
   let triton = new Moon(0.000843, 13, 0.625, '#847d7f', 300, -0.01)
-
   let stars
   let asteroids
   let kuiperAsteroids
   let comets
-
   const addStars = () => {
     stars = []
     for (let i = 0; i < 2000; i++) {
@@ -300,7 +293,6 @@ const SolarSystem = () => {
     x = Math.min(Math.max(-300*zoom, x), 300*zoom);
     y = Math.min(Math.max(-300*zoom, y), 300*zoom);
   }
-
   const startmove = (e) => {
     isMoving = true
     cx = e.clientX;
@@ -308,7 +300,6 @@ const SolarSystem = () => {
     gx = x*zoom;
     gy = y*zoom;
   }
-
   const move = (e) => {
     if (isMoving) {
       let ox = e.clientX - cx;
@@ -319,7 +310,6 @@ const SolarSystem = () => {
       y = Math.min(Math.max(-300*zoom, y), 300*zoom);
     }
   }
-  
   const endmove = (e) => {
     if (isMoving) {
       isMoving = false
@@ -327,22 +317,20 @@ const SolarSystem = () => {
       cy = null;
     }
   }
-
+  
   const draw = (ctx, frameCount) => {
-    ctx.canvas.width = window.innerWidth/5*4
-    ctx.canvas.height = window.innerHeight
-    ctx.clearRect(0,0, ctx.canvas.width,ctx.canvas.height)
+    window.addEventListener("resize", () => {
+      ctx.canvas.width = window.innerWidth/5*4
+      ctx.canvas.height = window.innerHeight
+    })
     ctx.save()
-
     ctx.translate(ctx.canvas.width/2, ctx.canvas.height/2)
     ctx.scale(zoom, zoom)
     ctx.translate(x, y)
-
     ctx.canvas.addEventListener('wheel', scroll)
     ctx.canvas.addEventListener('mousedown', startmove)
     ctx.canvas.addEventListener('mousemove', move)
     ctx.canvas.addEventListener('mouseup', endmove)
-
     const size=4000;
     ctx.beginPath();
     const n=20;
@@ -355,11 +343,11 @@ const SolarSystem = () => {
     ctx.lineWidth=linewidth;
     ctx.stroke();
     ctx.closePath();
-
     stars.forEach(star => {star.draw(ctx, frameCount)})
     asteroids.forEach(asteroid => {asteroid.draw(ctx, frameCount)})
     kuiperAsteroids.forEach(kuiperAsteroid => {kuiperAsteroid.draw(ctx, frameCount)})
-
+    ctx.fillStyle='rgba(0,0,0,0.2)';
+    ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height)
     moon.draw(ctx, frameCount)
     phobos.draw(ctx, frameCount)
     deimos.draw(ctx, frameCount)
@@ -379,7 +367,6 @@ const SolarSystem = () => {
     nereid.draw(ctx, frameCount)
     proteus.draw(ctx, frameCount)
     triton.draw(ctx, frameCount)
-
     neptune.draw(ctx, frameCount)
     uranus.draw(ctx, frameCount)
     saturn.draw(ctx, frameCount)
@@ -388,11 +375,8 @@ const SolarSystem = () => {
     earth.draw(ctx, frameCount)
     venus.draw(ctx, frameCount)
     mercury.draw(ctx, frameCount)
-
     sun.draw(ctx)
-
     comets.forEach(comet => {comet.draw(ctx, frameCount)})
-
     ctx.restore()
   }
 

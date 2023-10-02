@@ -4,7 +4,7 @@ body {margin: 0; padding: 0; background-color: #454545; overflow: hidden}
 h1 {margin: 0}
 
 /*#canvas {background: #231f20}*/
-#canvas {background: radial-gradient(#231f20, #100f0f);}
+#canvas {background: black}
 
 
 .container{display: grid; height: 100vh; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; grid-template-rows: 1fr; grid-template-areas:  "sidebar canvas canvas canvas canvas";}
