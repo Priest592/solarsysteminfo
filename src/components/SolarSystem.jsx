@@ -4,8 +4,10 @@ import {sunDefaults, planetDefaults, moonDefaults, miscDefaults} from './lists/D
 
 const SolarSystem = () => {
   const point=[]
-  const linewidth = 0.1
-  const linecolor = "#40404080"
+  const linewidth = 0.25
+  const linecolor = "#3c3a3c50"
+  const lineglow = 10
+  const glowcolor = "#3c3a3c"
 
 	class Sun {
     constructor (radius, color, glow, GlowColor) {
@@ -45,14 +47,18 @@ const SolarSystem = () => {
       ctx.translate(ctx.canvas.width/2, ctx.canvas.height/2)
       ctx.scale(zoom, zoom)
       ctx.translate(x, y)
+
       ctx.beginPath()
       ctx.arc(0, 0, this.range, 0, Math.PI * 2)
       ctx.strokeStyle = linecolor
       ctx.lineWidth = linewidth
+      ctx.shadowColor = glowcolor
+      ctx.shadowBlur = lineglow
       ctx.stroke()
       ctx.closePath()
+      ctx.shadowColor = 'transparent'
+      ctx.shadowBlur = 0
       ctx.rotate(frameCount*this.velocity)
-
       point.unshift([0,this.range]);
       if(point.length>1){
         point.pop();
@@ -66,7 +72,6 @@ const SolarSystem = () => {
       ctx.strokeStyle=linecolor;
       ctx.stroke();
       ctx.closePath();
-
       ctx.beginPath()
       ctx.arc(0, this.range, this.radius, 0, Math.PI * 2)
       ctx.fillStyle = this.color
@@ -81,6 +86,7 @@ const SolarSystem = () => {
       ctx.setTransform(1, 0, 0, 1, 0, 0)
     }
   }
+
   class Moon {
     constructor(planetVelocity, range, radius, color, planetRange, moonVelocity,) {
       this.planetVelocity = planetVelocity
@@ -103,7 +109,6 @@ const SolarSystem = () => {
       ctx.stroke()
       ctx.closePath()
       ctx.rotate(frameCount*this.moonVelocity)
-
       point.unshift([0,this.range]);
       if(point.length>1){
         point.pop();
@@ -117,7 +122,6 @@ const SolarSystem = () => {
       ctx.strokeStyle=linecolor;
       ctx.stroke();
       ctx.closePath();
-
       ctx.beginPath()
       ctx.arc(0, this.range, this.radius, 0, Math.PI * 2)
       ctx.fillStyle = this.color
@@ -177,7 +181,6 @@ const SolarSystem = () => {
       ctx.setTransform(1, 0, 0, 1, 0, 0)
     }
   }
-
 
   class Comet {
     constructor(innerRange, outerRange, vector, angle, colors) {
@@ -245,6 +248,7 @@ const SolarSystem = () => {
   let asteroids
   let kuiperAsteroids
   let comets
+
   const addStars = () => {
     stars = []
     for (let i = 0; i < 2000; i++) {
@@ -269,6 +273,7 @@ const SolarSystem = () => {
       comets.push(new Comet(70, 1400))
     }
   }
+
   addStars()
   addAsteroids()
   addKuiperAsteroids()
@@ -293,6 +298,7 @@ const SolarSystem = () => {
     x = Math.min(Math.max(-300*zoom, x), 300*zoom);
     y = Math.min(Math.max(-300*zoom, y), 300*zoom);
   }
+
   const startmove = (e) => {
     isMoving = true
     cx = e.clientX;
@@ -300,6 +306,7 @@ const SolarSystem = () => {
     gx = x*zoom;
     gy = y*zoom;
   }
+
   const move = (e) => {
     if (isMoving) {
       let ox = e.clientX - cx;
@@ -310,6 +317,7 @@ const SolarSystem = () => {
       y = Math.min(Math.max(-300*zoom, y), 300*zoom);
     }
   }
+
   const endmove = (e) => {
     if (isMoving) {
       isMoving = false
@@ -323,14 +331,17 @@ const SolarSystem = () => {
       ctx.canvas.width = window.innerWidth/5*4
       ctx.canvas.height = window.innerHeight
     })
+
     ctx.save()
     ctx.translate(ctx.canvas.width/2, ctx.canvas.height/2)
     ctx.scale(zoom, zoom)
     ctx.translate(x, y)
+
     ctx.canvas.addEventListener('wheel', scroll)
     ctx.canvas.addEventListener('mousedown', startmove)
     ctx.canvas.addEventListener('mousemove', move)
     ctx.canvas.addEventListener('mouseup', endmove)
+
     const size=4000;
     ctx.beginPath();
     const n=20;
@@ -341,13 +352,21 @@ const SolarSystem = () => {
     }
     ctx.strokeStyle=linecolor;
     ctx.lineWidth=linewidth;
+    ctx.shadowColor = glowcolor
+    ctx.shadowBlur = lineglow
     ctx.stroke();
+    ctx.shadowColor = 'transparent'
+    ctx.shadowBlur = 0
     ctx.closePath();
+
+
     stars.forEach(star => {star.draw(ctx, frameCount)})
     asteroids.forEach(asteroid => {asteroid.draw(ctx, frameCount)})
     kuiperAsteroids.forEach(kuiperAsteroid => {kuiperAsteroid.draw(ctx, frameCount)})
+
     ctx.fillStyle='rgba(0,0,0,0.2)';
     ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height)
+
     moon.draw(ctx, frameCount)
     phobos.draw(ctx, frameCount)
     deimos.draw(ctx, frameCount)
@@ -377,6 +396,7 @@ const SolarSystem = () => {
     mercury.draw(ctx, frameCount)
     sun.draw(ctx)
     comets.forEach(comet => {comet.draw(ctx, frameCount)})
+    
     ctx.restore()
   }
 
