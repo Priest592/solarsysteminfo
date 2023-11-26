@@ -1,6 +1,6 @@
 import React from 'react';
-import SolarSystem from './components/SolarSystem';
-import SideBar from './components/SideBar';
+import SolarSystem from './components/SolarSystem.jsx';
+import SideBar from './components/SideBar.jsx';
 import './App.css';
 
 const App = () => {
